@@ -18,7 +18,17 @@ public class EmployeeRepository {
     }
 
     public Employees add(Employees employees) {
-        if (employeesList.add(employees)){
+        if (employeesList.stream().anyMatch(employees1 -> employees1.getId().equals(employees.getId()))){
+            for (Employees employees1 : employeesList) {
+                if (employees1.getId().equals(employees.getId())){
+                    employeesList.remove(employees1);
+                    employeesList.add(employees);
+                    return employees;
+                }
+            }
+        }
+        else {
+            employeesList.add(employees);
             return employees;
         }
         return null;
@@ -37,4 +47,5 @@ public class EmployeeRepository {
         );
         return "success";
     }
+
 }

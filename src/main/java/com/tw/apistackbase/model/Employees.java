@@ -3,7 +3,7 @@ package com.tw.apistackbase.model;
 import java.util.UUID;
 
 public class Employees {
-    private final String ID = UUID.randomUUID().toString();
+    private String id = UUID.randomUUID().toString();
     private String name;
     private int age;
     private String gender;
@@ -18,7 +18,7 @@ public class Employees {
     }
 
     public String getId() {
-        return ID;
+        return id;
     }
 
     public String getName() {
