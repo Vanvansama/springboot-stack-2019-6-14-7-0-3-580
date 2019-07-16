@@ -1,7 +1,8 @@
 package com.tw.apistackbase.controller;
 
-import com.tw.apistackbase.Repository.EmployeeRepository;
 import com.tw.apistackbase.model.Employees;
+import com.tw.apistackbase.service.EmployeeServiceInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,26 +11,27 @@ import java.util.List;
 
 public class EmployeesController {
 
-    private EmployeeRepository employeeRepository = new EmployeeRepository();
+    @Autowired
+    private EmployeeServiceInterface employeeServiceInterface;
 
     @GetMapping("/employees")
     public List<Employees> list (){
-        return employeeRepository.findAll();
+        return employeeServiceInterface.findAll();
     }
 
     @PostMapping("/employees")
     public Employees add (@RequestBody Employees employees){
-        return employeeRepository.add(employees);
+        return employeeServiceInterface.add(employees);
     }
 
     @GetMapping("/employees/{employessId}")
     public Employees get (@PathVariable String employessId){
-        return employeeRepository.get(employessId);
+        return employeeServiceInterface.get(employessId);
     }
 
     @DeleteMapping("/employees/{employessId}")
     public String delete(@PathVariable String employessId){
-        return employeeRepository.delete(employessId);
+        return employeeServiceInterface.delete(employessId);
     }
 
 
