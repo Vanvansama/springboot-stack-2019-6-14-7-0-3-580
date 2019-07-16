@@ -18,7 +18,7 @@ public class EmployeesController {
     }
 
     @PostMapping("/employees")
-    public Employees add (@RequestParam Employees employees){
+    public Employees add (@RequestBody Employees employees){
         return employeeRepository.add(employees);
     }
 
