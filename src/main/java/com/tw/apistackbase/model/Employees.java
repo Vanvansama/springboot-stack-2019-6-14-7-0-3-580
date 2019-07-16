@@ -1,24 +1,24 @@
 package com.tw.apistackbase.model;
 
+import java.util.UUID;
+
 public class Employees {
-    private String id;
+    private final String ID = UUID.randomUUID().toString();
     private String name;
     private int age;
     private String gender;
 
-    public Employees(String id, String name, int age, String gender) {
-        this.id = id;
+    public Employees() {
+    }
+
+    public Employees(String name, int age, String gender) {
         this.name = name;
         this.age = age;
         this.gender = gender;
     }
 
     public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        return ID;
     }
 
     public String getName() {
